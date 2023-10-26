@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulma CSS 404 Page With Image</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<style>
+    .hero.is-primary {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0.5)), url("https://vuanem.com/blog/wp-content/uploads/2022/11/worldcup-la-gi4.png");
+        background-color: #cccccc;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
+<body>
+    <section class="hero is-primary is-fullheight">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+                        <form method="POST" class="box">
+                            <div class="field">
+                                <h1 style="text-align: center;">Welcome back</h1>
+                                <% if(success_msg !='' ){ %>
+                                    <article class="message is-danger">
+                                        <div class="message-body">
+                                            <%= success_msg %>
+                                        </div>
+                                    </article>
+                                    <% } %>
+                                        <% if(error_msg !='' ){ %>
+                                            <article class="message is-danger">
+                                                <div class="message-body">
+                                                    <%= error_msg %>
+                                                </div>
+                                            </article>
+                                            <% } %>
+                                                <% if(error !='' ){ %>
+                                                    <article class="message is-danger">
+                                                        <div class="message-body">
+                                                            <%= error %>
+                                                        </div>
+                                                    </article>
+                                                    <% } %>
+
+                                                        <label class="label">Username</label>
+                                                        <div class="control has-icons-left">
+                                                            <input type="text" placeholder="username" name="username"
+                                                                class="input" required />
+                                                            <span class="icon is-small is-left">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                        </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Password</label>
+                                <div class="control has-icons-left">
+                                    <input type="password" placeholder="*******" name="password" class="input"
+                                        required />
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="checkbox">
+                                    <input type="checkbox">
+                                    Remember me
+                                </label>
+                            </div>
+                            <div class="field">
+                                <button type="submit" class="button is-success">
+                                    Login
+                                </button>
+                            </div>
+                            <div class="field">
+                                <a href="/accounts/">No account ? Get one !</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="https://kit.fontawesome.com/0d96d88934.js" crossorigin="anonymous"></script>
+
+</html>

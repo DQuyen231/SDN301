@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulma CSS 404 Page With Image</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="section">
+            <div class="container">
+                <div class="media is-pulled-right">
+                    <div class="media-content"><span class="has-text-center">Connect With:</span><br />
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <div class="g-signin2"></div>
+                            </div>
+                            <div class="control">
+                                <button class="button githubSignin"><span class="github-icon icon"><i
+                                            class="fa fa-github"></i></span>
+                                    <p>Sign In</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="title">Sign Up</div>
+                <div class="subtitle">With Your Email</div>
+                <% if (typeof errors !='undefined' ) { %>
+                    <% errors.forEach(function (error){ %>
+                        <article class="message is-danger">
+                            <div class="message-body">
+                                <%= error.msg%>
+                            </div>
+                        </article>
+                        <% }); %>
+                            <% } %>
+                                <form id="register-form" method="post">
+                                    <div class="field">
+                                        <label class="label" for="username">Username</label>
+                                        <div class="control has-icons-left">
+                                            <input class="input" type="text" placeholder="Username" name="username"
+                                                required /><span class="icon is-left"><i class="fa fa-user"></i></span>
+                                        </div>
+                                        <label class="label" for="email">Email</label>
+                                        <div class="control has-icons-left">
+                                            <input class="input" type="email" placeholder="Email" name="email" /><span
+                                                class="icon is-left"><i class="fa fa-envelope"></i></span>
+                                        </div>
+                                        <div class="columns row-one">
+                                            <div class="column">
+                                                <label class="label" for="firstName">First Name</label>
+                                                <div class="control">
+                                                    <input class="input" type="text" placeholder="First Name"
+                                                        name="firstName" />
+                                                </div>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label" for="lastName">Last Name</label>
+                                                <div class="control">
+                                                    <input class="input" type="text" placeholder="Last Name"
+                                                        name="lastName" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="columns">
+                                            <div class="column">
+                                                <label class="label" for="password">Password</label>
+                                                <div class="control has-icons-left">
+                                                    <input class="input" type="password" placeholder="Password"
+                                                        name="password" required /><span class="icon is-left"><i
+                                                            class="fa fa-key"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label" for="retypePassword">Re-Type Password</label>
+                                                <div class="control has-icons-left">
+                                                    <input class="input" type="password" placeholder="Confirm Password"
+                                                        name="retypePassword" required /><span class="icon is-left"><i
+                                                            class="fa fa-lock"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field is-grouped">
+                                            <div class="control">
+                                                <button class="button is-medium"><a
+                                                        href="/accounts/login">Login</a></button>
+                                            </div>
+                                            <div class="control">
+                                                <button class="button is-primary is-medium"
+                                                    type="submit">Register</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://kit.fontawesome.com/0d96d88934.js" crossorigin="anonymous"></script>
+
+</html>
