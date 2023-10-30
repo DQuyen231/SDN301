@@ -1,25 +1,21 @@
-const mongoose = require('mongoose')
+// models/store.js
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const storeSchema = new Schema(
-    {
-        name: {
-            type: String,
-            require: true,
-            unique: true
-        },
-
-        address:{
-            type: String,
-            require : true
-        },
-
-        services: {
-            type: [String],
-            require: true
-        },
+const storeSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    address: {
+        type: String,
+        required: true
+    },
+    service: {
+        type: String,
+        required: true
     }
-);
+});
 
-const Store = mongoose.model("store", storeSchema)
+const Store = mongoose.model('stores', storeSchema);
 module.exports = Store;
