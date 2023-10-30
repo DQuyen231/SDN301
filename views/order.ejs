@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="../">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/1/1d/2014_FIFA_World_Cup.svg"
+            width="118"
+            height="56"
+          />
+        </a>
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="#"> Discover </a>
+
+          <a class="navbar-item" href="#"> About Us </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link"> More </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item"> Jobs </a>
+              <hr class="navbar-divider" />
+              <a class="navbar-item"> Report an issue </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <button
+                class="js-modal-trigger button is-danger"
+                data-target="modal-js-example"
+              >
+                Add Store
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="hero">
+      <div class="hero-body">
+        <p class="title">Orders</p>
+        <p class="subtitle">Explore the Orders</p>
+        <div class="container">
+          <div class="columns">
+            <div class="column">
+              <table
+                class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
+              >
+                <thead>
+                  <tr>
+                    <th>Address</th>
+                    <th>Order Date</th>
+                    <th>Store Name</th>
+                    <th>Status</th>
+                    <th>Total Price</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <% orderData.forEach(function(order){ %>
+                <tr>
+                  <td><%= order.address %></td>
+                  <td><%= order.orderDate %></td>
+                  <td><%= order.store_id.name %></td>
+                  <td><%= order.status %></td>
+                  <td><%= order.totalPrice %></td>
+                  <td>
+                    <a href="<%= baseUrl %>/edit/<%= order._id %>"
+                      ><button class="button is-warning">Edit</button></a
+                    >
+
+                    <a
+                      href="<%= baseUrl %>/delete/<%= order._id %>"
+                      onclick="return confirm('Are you sure to Delete this order? This cant be undone')"
+                      ><button class="button is-danger">Delete</button></a
+                    >
+                  </td>
+                </tr>
+                <% }); %>
+              </table>
+            </div>
+            <div id="modal-js-example" class="modal">
+              <div class="modal-background"></div>
+              <div class="modal-content">
+                <div class="box">
+                  <form method="post">
+                    <div class="field">
+                      <label class="label">Address</label>
+                      <div class="control">
+                        <input
+                          class="input"
+                          name="address"
+                          type="text"
+                          placeholder="Address"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Order Date</label>
+                      <div class="control">
+                        <input
+                          class="input"
+                          name="orderDate"
+                          type="text"
+                          placeholder="Order Date"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Store Name</label>
+                      <div class="control">
+                        <input
+                          class="input"
+                          name="store_id"
+                          type="text"
+                          placeholder="Store Name"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Status</label>
+                      <div class="control">
+                        <input
+                          class="input"
+                          name="status"
+                          type="text"
+                          placeholder="Status"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Total Price</label>
+                      <div class="control">
+                        <input
+                          class="input"
+                          name="totalPrice"
+                          type="text"
+                          placeholder="Total Price"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="field is-grouped">
+                      <div class="control">
+                        <button class="button is-link" type="submit">
+                          Submit
+                        </button>
+                      </div>
+                      <div class="control">
+                        <button class="button is-link is-light" type="reset">
+                          Reset
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <button class="modal-close is-large" aria-label="close"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Bulma</strong> by
+          <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is
+          licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The
+          website content is licensed
+          <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+            >CC BY NC SA 4.0</a
+          >.
+        </p>
+      </div>
+    </footer>
+  </body>
+  <script>
+    // ... JavaScript code for modals (unchanged)
+  </script>
+</html>

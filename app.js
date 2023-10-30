@@ -12,6 +12,8 @@ var indexRouter = require('./routes/index');
 var nationViewRouter = require('./routes/nationViewRouter')
 var playerViewRouter = require('./routes/playerViewRouter')
 var accountRouter = require('./routes/accountViewRouter')
+var storeRouter = require('./routes/storeRouter')
+var orderRouter = require('./routes/orderRouter')
 const cors = require('cors')
 const { default: mongoose } = require("mongoose");
 
@@ -34,7 +36,7 @@ app.use((req, res, next) => {
   res.locals.error = req.flash('error')
   next()
 })
-const url = "mongodb://127.0.0.1:27017/football"
+const url = "mongodb://127.0.0.1:27017/sdn301"
 const connect = mongoose.connect(url);
 connect.then((data) => {
   console.log("Connect OK !!")
@@ -56,6 +58,9 @@ app.use("/", indexRouter)
 app.use("/nation", nationViewRouter);
 app.use("/player", playerViewRouter);
 app.use("/accounts", accountRouter)
+app.use('/store', storeRouter);
+app.use('/order', orderRouter);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

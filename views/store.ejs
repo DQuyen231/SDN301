@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="../">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/1/1d/2014_FIFA_World_Cup.svg"
+            width="118"
+            height="56"
+          />
+        </a>
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="#"> Discover </a>
+
+          <a class="navbar-item" href="#"> About Us </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link"> More </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item"> Jobs </a>
+              <hr class="navbar-divider" />
+              <a class="navbar-item"> Report an issue </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <button
+                class="js-modal-trigger button is-danger"
+                data-target="modal-js-example"
+              >
+                Add Store
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="hero">
+      <div class="hero-body">
+        <p class="title">Stores</p>
+        <p class="subtitle">Explore the Stores</p>
+        <div class="container">
+          <div class="columns">
+            <div class="column">
+              <table
+                class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
+              >
+                <thead>
+                  <tr>
+                    <th>Store Name</th>
+                    <th>Address</th>
+                    <th>Service</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <% storeData.forEach(function(store){ %>
+                <tr>
+                  <td><%= store.name %></td>
+                  <td><%= store.address %></td>
+                  <td><%= store.service %></td>
+                  <td>
+                    <a href="<%= baseUrl %>/edit/<%=store._id%>"
+                      ><button class="button is-warning">Edit</button></a
+                    >
+
+                    <a
+                      href="<%= baseUrl %>/delete/<%= store._id%>"
+                      onclick="return confirm('Are you sure to Delete <%=store.name%> ? This cant be undone')"
+                      ><button class="button is-danger">Delete</button></a
+                    >
+                  </td>
+                </tr>
+                <% }); %>
+              </table>
+            </div>
+            <div id="modal-js-example" class="modal">
+              <div class="modal-background"></div>
+              <div class="modal-content">
+                <div class="box">
+                  <form method="post">
+                    <div class="field">
+                      <label class="label">Store Name</label>
+                      <div class="control">
+                        <input
+                          class="input"
+                          name="name"
+                          type="text"
+                          placeholder="Store Name"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Address</label>
+                      <div class="control">
+                        <input
+                          class="input"
+                          name="address"
+                          type="text"
+                          placeholder="Store Address"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Service</label>
+                      <div class="control">
+                        <input
+                          class="input"
+                          name="service"
+                          type="text"
+                          placeholder="Store Service"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="field is-grouped">
+                      <div class="control">
+                        <button class="button is-link" type="submit">
+                          Submit
+                        </button>
+                      </div>
+                      <div class="control">
+                        <button class="button is-link is-light" type="reset">
+                          Reset
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <button class="modal-close is-large" aria-label="close"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Bulma</strong> by
+          <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is
+          licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The
+          website content is licensed
+          <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+            >CC BY NC SA 4.0</a
+          >.
+        </p>
+      </div>
+    </footer>
+  </body>
+  <script>
+    // ... JavaScript code for modals (unchanged)
+  </script>
+</html>
